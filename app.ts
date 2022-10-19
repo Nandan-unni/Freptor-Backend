@@ -1,15 +1,29 @@
 import express, { Express } from "express";
 import dotenv from "dotenv";
-import DocsRouter from "./routers/docs.router";
+import mongoose from "mongoose";
+
+import Settings from "./settings";
+import Middlewares from "./middlewares";
+import Routers from "./routers";
 
 dotenv.config();
 
-const port = process.env.PORT || 8000;
+const PORT = process.env.PORT || 8000;
+const MONGODB_URI = process.env.MONGODB_URI || "";
 
-const app: Express = express();
+let app: Express = express();
 
-app.use("/", DocsRouter);
+app = Settings(app);
+app = Middlewares(app);
+app = Routers(app);
 
-app.listen(port, () =>
-  console.log(`Server running at http://localhost:${port}`)
-);
+// Connecting to Database
+mongoose
+  .connect(MONGODB_URI)
+  .then((db) => console.log("DataBase connection success."))
+  .catch((err) => console.log("DataBase connection failed.", err.toString()));
+
+// Running server
+app.listen(PORT, () => {
+  console.log(`Server running at http://localhost:${PORT}`);
+});
