@@ -6,6 +6,6 @@ const router = Router();
 
 router
   .post("/", FreelancerValidator.create, FreelancerController.create)
-  .get("/:id", FreelancerValidator.read, FreelancerController.read);
+  .get("/:fid", FreelancerValidator.read, FreelancerController.read);
 
 export default router;
