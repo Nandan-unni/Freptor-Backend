@@ -5,9 +5,11 @@ const errorMiddleware = (
   req: Request,
   res: Response,
   next: NextFunction
-): void => {
-  console.log(err);
-  res.status(500);
+): Response => {
+  console.log({ test: "keeranond", err });
+  return res
+    .status(500)
+    .json({ success: false, message: err.toString(), data: err });
 };
 
 export default errorMiddleware;
