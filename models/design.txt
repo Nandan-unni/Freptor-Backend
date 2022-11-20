@@ -1,0 +1,32 @@
+MODEL 1: FREELANCER
+username: string (unique)
+name: string
+role: string (options)
+email: string
+overdue: number
+currency: string (options)
+password: string (hash and salt)
+
+MODEL 2: PROJECT
+id: string
+name: string
+desc: string
+totalAmount: number
+recievedAmount: number
+hoursWorked: number
+hoursPaid: number
+companyName: string
+clientName: string
+phone: string
+email: string
+startDate: number (timestamp)
+endDate: number (timestamp)
+haveReminder: boolean
+reminderDate: number
+reminderTime: number (hhmmss)
+reminderRepeat: string
+
+MODEL 3: PAYMENT
+amount: number
+time: number (timestamp)
+note: string

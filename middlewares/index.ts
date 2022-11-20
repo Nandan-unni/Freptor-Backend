@@ -2,6 +2,7 @@ import { Express } from "express";
 import corsMiddleware from "./cors.middleware";
 import errorMiddleware from "./error.middleware";
 import logsMiddleware from "./logs.middleware";
+import validatorMiddleware from "./validator.middleware";
 
 const Middlewares = (app: Express) => {
   app.use(corsMiddleware);
@@ -11,3 +12,4 @@ const Middlewares = (app: Express) => {
 };
 
 export default Middlewares;
+export { validatorMiddleware };
