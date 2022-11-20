@@ -19,7 +19,14 @@ const CreateFreelancer = (req: Request, res: Response, next: NextFunction) => {
 };
 
 const ReadFreelancer = (req: Request, res: Response, next: NextFunction) => {
-  return validatorMiddleware(req, res, next, Joi.object({ fid: Joi.string() }));
+  return validatorMiddleware(
+    req,
+    res,
+    next,
+    Joi.object({
+      fid: Joi.string().hex().length(24).message("'fid' must be a valid uid"),
+    })
+  );
 };
 
 const FreelancerValidator = {

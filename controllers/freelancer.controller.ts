@@ -27,8 +27,26 @@ const CreateFreelancer = async (
   }
 };
 
-const ReadFreelancer = (req: Request, res: Response): Response => {
-  return res.status(200).json({ success: true });
+const ReadFreelancer = async (
+  req: Request,
+  res: Response
+): Promise<Response> => {
+  try {
+    const freelancer = await FreelancerModel.findById(req.params.fid);
+    if (freelancer)
+      return res.status(200).json({
+        success: false,
+        message: "Freelancer found",
+        data: freelancer,
+      });
+    return res
+      .status(404)
+      .json({ success: false, message: "Freelancer not found", data: {} });
+  } catch (error) {
+    return res
+      .status(500)
+      .json({ success: false, message: error.message, data: error });
+  }
 };
 
 const FreelancerController = {
