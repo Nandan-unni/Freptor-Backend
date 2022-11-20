@@ -1,7 +1,7 @@
 import { Request, Response } from "express";
 import { FreelancerModel, FreelancerType } from "../models";
 
-export const CreateFreelancer = async (
+const CreateFreelancer = async (
   req: Request,
   res: Response
 ): Promise<Response> => {
@@ -27,7 +27,7 @@ export const CreateFreelancer = async (
   }
 };
 
-export const ReadFreelancer = (req: Request, res: Response): Response => {
+const ReadFreelancer = (req: Request, res: Response): Response => {
   return res.status(200).json({ success: true });
 };
 
