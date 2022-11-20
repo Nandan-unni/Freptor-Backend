@@ -6,7 +6,6 @@ const errorMiddleware = (
   res: Response,
   next: NextFunction
 ): Response => {
-  console.log({ test: "keeranond", err });
   return res
     .status(500)
     .json({ success: false, message: err.toString(), data: err });
